@@ -9,7 +9,4 @@ Example todo application for MEAN
 - **DATABASE_USER:** Database user
 - **DATABASE_PASSWORD:** Database password
 - **DATABASE_NAME:** Database name
-
-# Application prerequisites
-
-The database for your node application should be configurable using the above database env vars.
+- **DATABASE_CONNECTION_OPTIONS:** Database connection options
