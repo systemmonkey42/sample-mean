@@ -4,8 +4,7 @@
 cd ${APP_FOLDER}
 
 echo "==> Printing env"
-env > a
-source a
+env
 
 case "$1" in
   start)
