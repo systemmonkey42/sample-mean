@@ -3,7 +3,7 @@
 echo "==> Printing env"
 env
 
-. /opt/bitnami/.env
+. /bitnami/.env
 
 echo "==> Printing env"
 env
