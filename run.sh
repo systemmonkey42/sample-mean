@@ -1,10 +1,11 @@
 #!/bin/bash -e
 
-echo "==> Printing env"
-env
-
 # Move to application folder first
 cd ${APP_FOLDER}
+
+echo "==> Printing env"
+env > a
+source a
 
 case "$1" in
   start)
@@ -24,6 +25,8 @@ case "$1" in
       echo "==> Aplication not initialized. Initializing now ..."
       npm install
       touch .initialized
+
+      sed -i 's/process\.env\.DATABASE_PORT/${APP_PASSWORD}/g' config/database.js
     else
       echo "==> Aplication already initialized. Skipping ..."
     fi
