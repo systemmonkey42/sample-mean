@@ -3,13 +3,28 @@
 echo "==> Printing env"
 env
 
-if [[ ! -f /.initialized ]]; then
-    echo "==> Aplication not initialized. Initializing now ..."
-    cd /app
-    npm install
-    touch /.initialized
-else
-    echo "==> Aplication already initialized. Skipping ..."
-fi
+# Move to application folder first
+cd ${APP_FOLDER}
 
-npm start
+case "$1" in
+  start)
+    npm start
+    exit $?
+    ;;
+  stop)
+    npm stop
+    exit $?
+    ;;
+  restart|force-reload|reload)
+    npm restart
+    exit $?
+    ;;
+  init)
+    if [[ ! -f /.initialized ]]; then
+      echo "==> Aplication not initialized. Initializing now ..."
+      npm install
+      touch /.initialized
+    else
+      echo "==> Aplication already initialized. Skipping ..."
+    fi
+esac
