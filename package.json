@@ -13,7 +13,7 @@
     "semver": "^5.4.1"
   },
   "scripts": {
-    "start": "node server.js",
-    "stop": "pkill --signal SIGINT node-todo"
+    "start": "PROCESS_TITLE=node-todo node server.js",
+    "stop": "killall -SIGINT node-todo"
   }
 }
