@@ -20,10 +20,10 @@ case "$1" in
     exit $?
     ;;
   init)
-    if [[ ! -f /.initialized ]]; then
+    if [[ ! -f .initialized ]]; then
       echo "==> Aplication not initialized. Initializing now ..."
       npm install
-      touch /.initialized
+      touch .initialized
     else
       echo "==> Aplication already initialized. Skipping ..."
     fi
