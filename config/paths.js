@@ -1,3 +1,3 @@
 module.exports = {
-  staticFiles: process.env.DATA_FOLDER;
+  staticFiles: process.env.DATA_FOLDER
 };
