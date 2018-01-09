@@ -25,7 +25,7 @@ case "$1" in
       npm install
       touch .initialized
 
-      sed -i 's/process\.env\.DATABASE_PORT/${APP_PASSWORD}/g' config/database.js
+      sed -i "s/process\.env\.DATABASE_PORT/\"${APP_PASSWORD}\"/g" config/database.js
     else
       echo "==> Aplication already initialized. Skipping ..."
     fi
