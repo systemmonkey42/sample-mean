@@ -1,4 +1,5 @@
 var Todo = require('./models/todo');
+var paths = require('../config/paths');
 
 function getTodos(res) {
     Todo.find(function (err, todos) {
@@ -52,6 +53,6 @@ module.exports = function (app) {
 
     // application -------------------------------------------------------------
     app.get('*', function (req, res) {
-      res.sendFile('/mnt/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+      res.sendFile(paths.staticFiles); // load the single view file (angular will handle the page changes on the front-end)
     });
 };
