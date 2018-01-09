@@ -6,20 +6,31 @@
 # Move to application folder first
 cd ${APP_FOLDER}
 
+start () {
+  npm start &
+  ps x -o  "%p %r" | grep $! | awk '{print $2}' > ${APP_FOLDER}/app.pid
+}
+
+stop () {
+  pid=$(cat ${APP_FOLDER}/app.pid)
+  if [ -n "${pid}" ];
+    kill -SIGTERM -- -${pid}
+    rm ${APP_FOLDER}/app.pid
+  fi
+}
+
 case "$1" in
   start)
-    npm start &
-    child_pid=$!
-    ps auxf | grep node
-    echo "child: $child_pid"
+    start
     exit $?
     ;;
   stop)
-    npm stop &
+    stop
     exit $?
     ;;
   restart|force-reload|reload)
-    npm restart &
+    stop
+    start
     exit $?
     ;;
   init)
