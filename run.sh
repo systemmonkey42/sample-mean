@@ -9,6 +9,9 @@ cd ${APP_FOLDER}
 case "$1" in
   start)
     npm start &
+    child_pid=$!
+    ps auxf | grep node
+    echo "child: $child_pid"
     exit $?
     ;;
   stop)
