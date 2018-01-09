@@ -9,9 +9,6 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
-// set process title in order to handle stop
-process.title = "node-todo";
-
 // configuration ===============================================================
 mongoose.connect(database.remoteUrl);                         // connect to local MongoDB instance. A remoteUrl is also available (modulus.io)
 
