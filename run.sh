@@ -2,6 +2,7 @@
 
 # Load deployment environment
 . /bitnami/.env
+export PORT=80
 
 # Move to application folder first
 cd ${APP_FOLDER}
