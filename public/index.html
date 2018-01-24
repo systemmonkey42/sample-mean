@@ -33,14 +33,14 @@
 
 		<!-- HEADER AND TODO COUNT -->
 		<div class="jumbotron text-center">
-			<h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
+			<h1>I'm a Bitnami-aholic <span class="label label-info">{{ todos.length }}</span></h1>
 		</div>
 
 		<!-- TODO LIST -->
 		<div id="todo-list" class="row">
 			<div class="col-sm-4 col-sm-offset-4">
 
-				
+
 
 				<!-- LOOP OVER THE TODOS IN $scope.todos -->
 				<div class="checkbox" ng-repeat="todo in todos">
@@ -77,7 +77,12 @@
 			<p>Read the <a href="http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular">tutorial</a>.</p>
 		</div>
 
-	</div>
+		<img src="img/bitnami.png" class="img-responsive" style="width:15%;margin:auto;padding-bottom:15px;padding-top:15px" alt="Bitnami Logo">
 
-</body>
+                <div class="text-center text-muted">
+			<p>This is an example MEAN application hosted in <a href="https://github.com/bitnami/sample-mean">GitHub</a> and based on the <a href="https://github.com/scotch-io/node-todo">scotch node-todo application</a>.</p>
+			<p>Please check the <a href="https://github.com/bitnami/sample-mean/blob/master/README.md">README</a> in the repository to see how to deploy your own application.</p>
+		</div>
+
+	</div>
 </html>
