@@ -2,7 +2,9 @@
 
 # Load deployment environment
 . /bitnami/.env
-export PORT=80
+
+# Load balancer will redirect HTTP (port 80) traffic to port 8080
+export PORT=8080
 
 # Move to application folder first
 cd ${APP_FOLDER}
@@ -23,23 +25,22 @@ stop () {
 
 case "$1" in
   start)
-    pm2 start server.js --name node-todo
+    su bitnami pm2 start server.js --name node-todo
     exit $?
     ;;
   stop)
-    pm2 stop node-todo
+    su bitnami pm2 stop node-todo
     exit $?
     ;;
   restart|force-reload|reload)
-    pm2 restart node-todo
+    # `--update-env` will allow to load environment variables from /bitnami/.env
+    # in case they changed
+    su bitnami pm2 restart node-todo --update-env
     exit $?
     ;;
   init)
-    if [[ ! -f .initialized ]]; then
+    if [[ ! -f ${DATA_FOLDER}/.initialized ]]; then
       echo "==> Aplication not initialized. Initializing now..."
-
-      # Install node modules
-      npm install
 
       # Move static files to mount point
       rm -rf ${DATA_FOLDER}
@@ -47,9 +48,23 @@ case "$1" in
       mv public ${DATA_FOLDER}
       ln -sf ${DATA_FOLDER}/public public
 
+      # Fix permissions
+      chown -R bitnami:bitnami ${APP_FOLDER}
+      chown -R bitnami:bitnami ${DATA_FOLDER}
+      chown root:root ${APP_FOLDER}/run.sh
+
+      # Install node modules
+      su bitnami npm install
+
       # Touch semaphore
-      touch .initialized
+      su bitnami touch ${DATA_FOLDER}/.initialized
     else
       echo "==> Aplication already initialized. Skipping..."
     fi
+    exit 0
+    ;;
+  *)
+    echo "Invalid option!"
+    exit 1
+    ;;
 esac
