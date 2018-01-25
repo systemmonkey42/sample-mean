@@ -6,20 +6,6 @@
 # Load balancer will redirect HTTP (port 80) traffic to port 8080
 export PORT=8080
 
-# TODOC: Bash + npm style
-start () {
-  npm start &
-  ps x -o  "%p %r" | grep $! | awk '{print $2}' > ${APP_FOLDER}/app.pid
-}
-
-stop () {
-  pid=$(cat ${APP_FOLDER}/app.pid)
-  if [ -n "${pid}" ]; then
-    kill -SIGTERM -- -${pid}
-    rm ${APP_FOLDER}/app.pid
-  fi
-}
-
 case "$1" in
   start)
     pm2 start ${APP_FOLDER}/server.js --name node-todo --uid bitnami --gid bitnami
