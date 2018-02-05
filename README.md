@@ -6,7 +6,7 @@ If your application fulfill the next requirements you will be able to deploy sev
 
 All the configuration related to the application and the database is made by environment variables in the Azure interface and passed to each application node via an env file. To get more information about how the Node.Js High-Availability Cluster template work, please visit the bitnami documentation:
 
-https://docs.bitnami.com/azure-templates/infrastructure/nodejs-cluster/
+https://docs.bitnami.com/azure-templates/infrastructure/nodejs
 
 # Architecture
 
