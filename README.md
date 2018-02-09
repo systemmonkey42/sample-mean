@@ -2,9 +2,17 @@
 
 This application is an example of how to deploy Node.js applications in high availability mode in the Azure cloud.
 
-All the configuration related to the application and the database is made by environment variables in the Azure interface and passed to each application node via an env file. If your application fulfill the next requirements you will be able to deploy several instances of your application working behing a LoadBalancer and with a shared filesystem for public files in just a few minutes.
+If your application fulfill [these requirements](#requirements) you will be able to deploy several instances of your application working behind a LoadBalancer and with a shared filesystem in just a few minutes. In order to quickly and easily provision a globally distributed and scalable database, consider the **Azure Cosmos DB** service. Check [this link](https://docs.microsoft.com/en-us/azure/cosmos-db/introduction) for the full list of Azure Cosmos DB features. Also, check how to connect your application to a MongoDB CosmosDB database [in this example](#example-for-a-mongodb-cosmos-deploy).
 
-# Requirements:
+All the configuration related to the application and the database is made by environment variables in the Azure interface and passed to each application node via an [env file](#init-script). To get more information about how the Node.Js High-Availability Cluster template work, please visit the bitnami documentation:
+
+https://docs.bitnami.com/azure-templates/infrastructure/nodejs
+
+# Architecture
+
+![architecture](images/nodejs-cluster.png)
+
+# Requirements
 
 For your application to be compatible with the Node.js High-Availability Cluster solution it should fulfill the next requirements:
 
@@ -121,7 +129,7 @@ module.exports = {
 };
 ```
 
-###### Example for a [MongoDB Cosmos](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction) deploy:
+###### Example for a [MongoDB Cosmos](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction) database:
 
 - **DATABASE_HOST:** _your_host_.documents.azure.com
 - **DATABASE_PORT:** 10255
