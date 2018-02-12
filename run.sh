@@ -15,9 +15,7 @@ case "$1" in
     exit $?
     ;;
   restart|force-reload|reload)
-    # `--update-env` will allow to load environment variables from /bitnami/.env
-    # in case they changed
-    pm2 restart node-todo --update-env --uid bitnami --gid bitnami
+    pm2 restart node-todo --uid bitnami --gid bitnami
     exit $?
     ;;
   init)
