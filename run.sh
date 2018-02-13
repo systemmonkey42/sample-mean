@@ -1,7 +1,13 @@
 #!/bin/bash -e
 
+# Make sure only root can run our script
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root" 1>&2
+   exit 1
+fi
+
 # Load deployment environment
-. /bitnami/.env
+. /root/.deployment.env
 
 case "$1" in
   start)
