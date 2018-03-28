@@ -1,9 +1,9 @@
-const databaseHost = process.env.DATABASE_HOST;
-const databasePort = process.env.DATABASE_PORT;
-const databaseUser = process.env.DATABASE_USER;
-const databasePassword = process.env.DATABASE_PASSWORD;
-const databaseName = process.env.DATABASE_NAME;
-const databaseConnectionOpts = process.env.DATABASE_CONNECTION_OPTIONS;
+const databaseHost = process.env.DATABASE_HOST.trim();
+const databasePort = process.env.DATABASE_PORT.trim();
+const databaseUser = process.env.DATABASE_USER.trim();
+const databasePassword = process.env.DATABASE_PASSWORD.trim();
+const databaseName = process.env.DATABASE_NAME.trim();
+const databaseConnectionOpts = process.env.DATABASE_CONNECTION_OPTIONS.trim();
 
 module.exports = {
   // Examples of valid connection strings.
